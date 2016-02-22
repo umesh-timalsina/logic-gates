@@ -8,6 +8,9 @@ var config = require('webgme/config/config.default'),
 
 
 // The paths can be loaded from the webgme-setup.json
+config.plugin.basePaths.push('src/plugins');
+config.visualization.decoratorPaths.push('src/decorators');
+config.seedProjects.basePaths.push('src/seeds/LogicGates');
 
 
 // Visualizer descriptors
@@ -16,6 +19,6 @@ var config = require('webgme/config/config.default'),
 
 
 
-config.mongo.uri = 'mongodb://127.0.0.1:27017/logic_gates';
+config.mongo.uri = 'mongodb://127.0.0.1:27017/webgme_logic_gates';
 validateConfig(config);
 module.exports = config;
