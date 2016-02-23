@@ -2,18 +2,18 @@
   "components": {
     "plugins": {
       "LogicGatesExporter": {
-        "src": "src\\plugins\\LogicGatesExporter",
-        "test": "test\\plugins\\LogicGatesExporter"
+        "src": "src/plugins/LogicGatesExporter",
+        "test": "test/plugins/LogicGatesExporter"
       }
     },
     "decorators": {
       "LogicGatesDecorator": {
-        "src": "src\\decorators\\LogicGatesDecorator"
+        "src": "src/decorators/LogicGatesDecorator"
       }
     },
     "seeds": {
       "LogicGates": {
-        "src": "src\\seeds\\LogicGates"
+        "src": "src/seeds/LogicGates"
       }
     }
   },
