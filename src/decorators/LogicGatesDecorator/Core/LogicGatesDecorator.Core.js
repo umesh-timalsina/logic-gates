@@ -92,7 +92,7 @@ define(['js/Constants',
         }
 
         if(Object.keys(svgCache || {}).length === 0){
-            var _metaAspectTypes = LogicGatesMETA.getMetaTypes();
+            var _metaAspectTypes = LogicGatesMETA.getDecoredMETATypes();
 
             for (var m in _metaAspectTypes) {
 
@@ -111,7 +111,6 @@ define(['js/Constants',
                             svgCache[m] = $(data.childNodes[0]);
                         })
                         .fail(function () {
-
                             // download failed for this type
                             // TODO: console.warning('Failed to download: ' + svg_resource_url);
                         });
@@ -339,7 +338,8 @@ define(['js/Constants',
         // initialize local variables
         var control = this._control,
             gmeID = this._metaInfo[CONSTANTS.GME_ID],
-            name = (control._client.getNode(gmeID)).getAttribute(nodePropertyNames.Attributes.name),
+            node = (control._client.getNode(gmeID)),
+            name = node ? node.getAttribute(nodePropertyNames.Attributes.name) : '',
             META_TYPES = LogicGatesMETA.getMetaTypes(),
             isAbstractType = gmeID === META_TYPES.LogicGateBase || gmeID === META_TYPES.SimpleLogicGate ||
                              gmeID === META_TYPES.ComplexLogicGate,

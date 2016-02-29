@@ -44,6 +44,26 @@ define(['underscore'], function (_underscore) {
             'Xnor': 'Xnor',
             'Xor': 'Xor'
         },
+        DecoredMETATypes = {
+            'And': 'And',
+            'Buffer': 'Buffer',
+            'Clock': 'Clock',
+            'InputPort': 'InputPort',
+            'LogicCircuit': 'LogicCircuit',
+            'LogicGatesDiagrams': 'LogicGatesDiagrams',
+            'LogicGatesMetaLanguage': 'LogicGatesMetaLanguage',
+            'Nand': 'Nand',
+            'Nor': 'Nor',
+            'Not': 'Not',
+            'NumericInput': 'NumericInput',
+            'NumericOutput': 'NumericOutput',
+            'Or': 'Or',
+            'OutputPort': 'OutputPort',
+            'UserInput': 'UserInput',
+            'UserOutput': 'UserOutput',
+            'Xnor': 'Xnor',
+            'Xor': 'Xor'
+        },
         client = WebGMEGlobal.Client;
 
     function _getMetaTypes() {
@@ -55,6 +75,22 @@ define(['underscore'], function (_underscore) {
         for (i = 0; i < metaNodes.length; i += 1) {
             name = metaNodes[i].getAttribute('name');
             if (META_TYPES[name]) {
+                dictionary[name] = metaNodes[i].getId();
+            }
+        }
+
+        return dictionary;
+    }
+
+    function _getDecoredMETATypes() {
+        var metaNodes = client.getAllMetaNodes(),
+            dictionary = {},
+            i,
+            name;
+
+        for (i = 0; i < metaNodes.length; i += 1) {
+            name = metaNodes[i].getAttribute('name');
+            if (DecoredMETATypes[name]) {
                 dictionary[name] = metaNodes[i].getId();
             }
         }
@@ -76,43 +112,6 @@ define(['underscore'], function (_underscore) {
 
         return result;
     }
-
-    //META ASPECT TYPES
-    //var _metaTypes = {
-    //    'And': '/-149/-38',
-    //    'Buffer': '/-149/-28',
-    //    'Clock': '/-149/-19',
-    //    'ComplexLogicGate': '/-149/-24',
-    //    'InputPort': '/-149/-50',
-    //    'LogicCircuit': '/-149/-5',
-    //    'LogicGateBase': '/-149/-8',
-    //    'LogicGatesDiagrams': '/-149/-2',
-    //    'LogicGatesMetaLanguage': '/-149',
-    //    'Nand': '/-149/-44',
-    //    'Nor': '/-149/-49',
-    //    'Not': '/-149/-25',
-    //    'NumericIOBase': '/-149/-17',
-    //    'NumericInput': '/-149/-3',
-    //    'NumericOutput': '/-149/-7',
-    //    'Or': '/-149/-41',
-    //    'OutputPort': '/-149/-53',
-    //    'OutputPort2InputPort': '/-149/-54',
-    //    'OutputPort2UserOutput': '/-149/-60',
-    //    'PortBase': '/-149/-11',
-    //    'PortBase2UserIOBase': '/-149/-16',
-    //    'PortConnection': '/-149/-14',
-    //    'SimpleLogicGate': '/-149/-21',
-    //    'UserIOBase': '/-149/-20',
-    //    'UserIOBase2PortBase': '/-149/-23',
-    //    'UserIOBase2UserIOBase': '/-149/-31',
-    //    'UserInput': '/-149/-15',
-    //    'UserInput2InputPort': '/-149/-57',
-    //    'UserInputBase': '/-149/-9',
-    //    'UserInputBase2UserOutput': '/-149/-63',
-    //    'UserOutput': '/-149/-13',
-    //    'Xnor': '/-149/-47',
-    //    'Xor': '/-149/-48'
-    //};
 
     //META ASPECT TYPE CHECKING
     var _isAnd = function (objID) {
@@ -219,6 +218,7 @@ define(['underscore'], function (_underscore) {
     return {
         getMetaTypes: _getMetaTypes,
         getMetaTypesOf: _getMetaTypesOf,
+        getDecoredMETATypes: _getDecoredMETATypes,
         TYPE_INFO: {
             isAnd: _isAnd,
             isBuffer: _isBuffer,
