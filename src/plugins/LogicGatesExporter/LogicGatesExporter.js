@@ -4,13 +4,16 @@
 
 define(['plugin/PluginConfig',
     'plugin/PluginBase',
+    'text!./metadata.json',
     'common/util/xmljsonconverter'
-], function (PluginConfig, PluginBase, Converter) {
+], function (PluginConfig, PluginBase, pluginMetadata, Converter) {
 
     'use strict';
+    pluginMetadata = JSON.parse(pluginMetadata);
 
     var LogicGatesExporterPlugin = function () {
         PluginBase.call(this);
+        this.pluginMetadata = pluginMetadata;
 
         this.objectToVisit = 1; // number of objects that have to be visited, visiting the selected node makes it start with 1
         this.diagramPath = "";
@@ -58,12 +61,10 @@ define(['plugin/PluginConfig',
         };
     };
 
+    LogicGatesExporterPlugin.metadata = pluginMetadata;
+
     LogicGatesExporterPlugin.prototype = Object.create(PluginBase.prototype);
     LogicGatesExporterPlugin.prototype.constructor = LogicGatesExporterPlugin;
-
-    LogicGatesExporterPlugin.prototype.getName = function () {
-        return 'LogicGatesExporter';
-    };
 
     LogicGatesExporterPlugin.prototype.main = function (callback) {
         var self = this,

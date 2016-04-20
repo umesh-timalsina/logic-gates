@@ -1,0 +1,14 @@
+
+{
+  "id": "LogicGatesExporter",
+  "name": "Logic Gates Exporter",
+  "version": "2.0.0",
+  "description": "Generates source code in different languages for executable logic gates.",
+  "icon": {
+    "src": "",
+    "class": "fa fa-code"
+  },
+  "disableServerSideExecution": false,
+  "disableBrowserSideExecution": false,
+  "configStructure": []
+}
