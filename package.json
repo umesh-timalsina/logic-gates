@@ -29,5 +29,9 @@
     "LogicGates",
     "webgme-domain"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webgme/logic-gates.git"
+  },
   "license": "MIT"
 }
