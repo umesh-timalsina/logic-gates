@@ -1,7 +1,7 @@
-# Finite State Machine
-[Finite state machine](https://en.wikipedia.org/wiki/Logic_gate) domain with seed, decorator, and plugin for generating .
+# Logic Gates
+[Logic Gates](https://en.wikipedia.org/wiki/Logic_gate) domain with seed, decorator, and plugin for generating .
 
-![Finite-state-machine](img/exampleScreenshot.png "Metamodel and a simple flip-flop")
+![Logic-gates](img/exampleScreenshot.png "Metamodel and a simple flip-flop")
 
 ## Run as a standalone webgme app
 Make sure the [dependencies for webgme](https://github.com/webgme/webgme/blob/master/README.md#dependencies) are installed.
