@@ -120,7 +120,7 @@ define([], function () {
         if (node) {
             metaNode = client.getNode(node.getMetaTypeId());
             if (metaNode) {
-                return metaNode.getFullyQualifiedName();
+                return metaNode.getAttribute('name');
             }
         }
         return null;

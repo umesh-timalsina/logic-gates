@@ -1,11 +1,6 @@
 {
   "components": {
-    "plugins": {
-      "LogicGatesExporter": {
-        "src": "src/plugins/LogicGatesExporter",
-        "test": "test/plugins/LogicGatesExporter"
-      }
-    },
+    "plugins": {},
     "decorators": {
       "LogicGatesDecorator": {
         "src": "src/decorators/LogicGatesDecorator"
@@ -15,11 +10,19 @@
       "LogicGates": {
         "src": "src/seeds/LogicGates"
       }
-    }
+    },
+    "addons": {},
+    "layouts": {},
+    "routers": {},
+    "visualizers": {}
   },
   "dependencies": {
     "plugins": {},
     "decorators": {},
-    "seeds": {}
+    "seeds": {},
+    "addons": {},
+    "layouts": {},
+    "routers": {},
+    "visualizers": {}
   }
 }

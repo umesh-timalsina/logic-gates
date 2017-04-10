@@ -18,7 +18,7 @@ Using the [webgme-cli](https://github.com/webgme/webgme-cli) the following piece
 #### Seed
 Serialized model containing the logic-gates metamodel and some examples.
 ```
-webgme import seed FiniteStateMachine webgme-logic-gates
+webgme import seed LogicGates webgme-logic-gates
 ```
 #### Decorator
 Decorates the gates, ports, and circuits in an appropriate fashion. The seed already registers the decorator for the appropriate nodes.

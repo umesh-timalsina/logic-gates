@@ -4,6 +4,10 @@
     "start": "node app.js",
     "test": "node ./node_modules/mocha/bin/mocha --recursive test"
   },
+  "author": {
+    "name": "WebGME Development Team",
+    "url": "https://webgme.org"
+  },
   "version": "1.1.0",
   "dependencies": {
   },
