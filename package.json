@@ -1,10 +1,14 @@
 {
-  "name": "logic-gates",
+  "name": "webgme-logic-gates",
   "scripts": {
     "start": "node app.js",
     "test": "node ./node_modules/mocha/bin/mocha --recursive test"
   },
-  "version": "1.0.0",
+  "author": {
+    "name": "WebGME Development Team",
+    "url": "https://webgme.org"
+  },
+  "version": "1.1.0",
   "dependencies": {
   },
     "peerDependencies": {
@@ -14,5 +18,20 @@
     "mocha": "^2.2.5",
     "rimraf": "^2.4.0",
     "chai": "^3.0.0"
-  }
+  },
+  "description": "Logic Gates domain for webgme allowing modelling of logical circuitry.",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "webgme",
+    "LogicGates",
+    "webgme-domain"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webgme/logic-gates.git"
+  },
+  "license": "MIT"
 }

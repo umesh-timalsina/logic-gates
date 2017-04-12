@@ -6,7 +6,7 @@
 
 "use strict";
 
-define(['underscore'], function (_underscore) {
+define([], function () {
 
     var _metaID = 'LogicGates.META.js',
         META_TYPES = {
@@ -111,6 +111,19 @@ define(['underscore'], function (_underscore) {
         }
 
         return result;
+    }
+
+    function _getMetaTypeOf(objId) {
+        var node = client.getNode(objId),
+            metaNode;
+
+        if (node) {
+            metaNode = client.getNode(node.getMetaTypeId());
+            if (metaNode) {
+                return metaNode.getAttribute('name');
+            }
+        }
+        return null;
     }
 
     //META ASPECT TYPE CHECKING
@@ -219,6 +232,7 @@ define(['underscore'], function (_underscore) {
         getMetaTypes: _getMetaTypes,
         getMetaTypesOf: _getMetaTypesOf,
         getDecoredMETATypes: _getDecoredMETATypes,
+        getMetaTypeOf: _getMetaTypeOf,
         TYPE_INFO: {
             isAnd: _isAnd,
             isBuffer: _isBuffer,

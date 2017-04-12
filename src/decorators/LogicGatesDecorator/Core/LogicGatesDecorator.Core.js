@@ -49,7 +49,6 @@ define(['js/Constants',
      */
     var errorSVGBase = $(DefaultSvgTemplate);
 
-
     /**
      * Creates a new instance of LogicGatesDecoratorCore.
      * @constructor
@@ -91,7 +90,7 @@ define(['js/Constants',
             this._displayConnectors = params.connectors;
         }
 
-        if(Object.keys(svgCache || {}).length === 0){
+        if (Object.keys(svgCache || {}).length === 0) {
             var _metaAspectTypes = LogicGatesMETA.getDecoredMETATypes();
 
             for (var m in _metaAspectTypes) {
@@ -133,36 +132,9 @@ define(['js/Constants',
             returnSVG,
             len;
 
-        // get all META types for the given GME object including inheritance in the meta model
-        LogicGatesClassNames = LogicGatesMETA.getMetaTypesOf(gmeID);
-
-        // reverse the list since the iteration is backwards in the while loop
-        LogicGatesClassNames.reverse();
-
-        // lenght of the list on which the iteration is performed
-        len = LogicGatesClassNames.length;
-
-        // iterate through the list from the last element to the first one
-        while (len--) {
-            // get current the META type name
-            LogicGatesClassName = LogicGatesClassNames[len];
-
-            if (LogicGatesClassName === undefined || LogicGatesClassName === null || LogicGatesClassName === "") {
-
-                // if the META type name is invalid return with an error SVG
-                returnSVG = errorSVGBase.clone();
-
-            } else {
-
-                // META type name is valid
-                if (svgCache[LogicGatesClassName]) {
-
-                    // if META type name is already in the cache use the cached value
-                    // do NOT download again from the server
-                    returnSVG = svgCache[LogicGatesClassName].clone();
-
-                }
-            }
+        LogicGatesClassName = LogicGatesMETA.getMetaTypeOf(gmeID);
+        if (LogicGatesClassName && svgCache[LogicGatesClassName]) {
+            returnSVG = svgCache[LogicGatesClassName].clone();
         }
 
         if (returnSVG === undefined) {
@@ -213,8 +185,8 @@ define(['js/Constants',
         var gmeID = this._metaInfo[CONSTANTS.GME_ID];
 
         // meta type of the rendered object
-        this._metaType = LogicGatesMETA.getMetaTypesOf(gmeID)[0];
-
+        // this._metaType = LogicGatesMETA.getMetaTypesOf(gmeID)[0];
+        this._metaType = LogicGatesMETA.getMetaTypeOf(gmeID);
 
         if (DEBUG) {
 
@@ -276,7 +248,6 @@ define(['js/Constants',
         // update the rendered object
         this.update();
     };
-
 
     /**
      * Updates the rendered object. This function is called by the Widget.
@@ -342,14 +313,14 @@ define(['js/Constants',
             name = node ? node.getAttribute(nodePropertyNames.Attributes.name) : '',
             META_TYPES = LogicGatesMETA.getMetaTypes(),
             isAbstractType = gmeID === META_TYPES.LogicGateBase || gmeID === META_TYPES.SimpleLogicGate ||
-                             gmeID === META_TYPES.ComplexLogicGate,
+                gmeID === META_TYPES.ComplexLogicGate,
             isTypeLogicGate = LogicGatesMETA.TYPE_INFO.isLogicGateBase(gmeID) && !isAbstractType,
             isAbstractIOType = gmeID === META_TYPES.PortBase || gmeID === META_TYPES.NumericIOBase ||
-                               gmeID === META_TYPES.UserInputBase,
+                gmeID === META_TYPES.UserInputBase,
             isTypeUserOutput = LogicGatesMETA.TYPE_INFO.isUserOutput(gmeID),
             isAnyIOType = LogicGatesMETA.TYPE_INFO.isNumericIOBase(gmeID) ||
-                          LogicGatesMETA.TYPE_INFO.isPortBase(gmeID) ||
-                          LogicGatesMETA.TYPE_INFO.isUserInputBase(gmeID) || isTypeUserOutput,
+                LogicGatesMETA.TYPE_INFO.isPortBase(gmeID) ||
+                LogicGatesMETA.TYPE_INFO.isUserInputBase(gmeID) || isTypeUserOutput,
             isIOType = isAnyIOType && !isAbstractType,
             isTypeUserInput = LogicGatesMETA.TYPE_INFO.isUserInput(gmeID),
             isTypeClock = LogicGatesMETA.TYPE_INFO.isClock(gmeID);
@@ -376,7 +347,6 @@ define(['js/Constants',
             }
         }
     };
-
 
     /* TO BE OVERRIDDEN IN META TYPE SPECIFIC CODE */
 
@@ -413,7 +383,6 @@ define(['js/Constants',
     LogicGatesDecoratorCore.prototype._unregisterForNotification = function (portId) {
 
     };
-
 
     return LogicGatesDecoratorCore;
 });
