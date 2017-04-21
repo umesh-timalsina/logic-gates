@@ -8,10 +8,9 @@
     "name": "WebGME Development Team",
     "url": "https://webgme.org"
   },
-  "version": "1.1.0",
-  "dependencies": {
-  },
-    "peerDependencies": {
+  "version": "1.0.0",
+  "dependencies": {},
+  "peerDependencies": {
     "webgme": "2.x"
   },
   "devDependencies": {
